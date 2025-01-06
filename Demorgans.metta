@@ -7,7 +7,7 @@
  ; Simplify double negation: NOT (NOT A) → A
 (= (transform ('NOT' ('NOT' $a))) (transform $a))
 
- ; Apply De Morgan's laws: NOT (AND A B) → OR (NOT A) (NOT B)
+ ; Apply gDe Morgan's laws: NOT (AND A B) → OR (NOT A) (NOT B)
 (= (transform ('NOT' ('AND' $a $b)))
     ('OR' (transform ('NOT' $a)) (transform ('NOT' $b))))
 
