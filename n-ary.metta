@@ -1,6 +1,6 @@
 (= (Demorgans $prev $expr)
-    (if (== (get-metatype $expr) Symbol) ; This code checks if its a symbol and if it is it will just propagate not to the symbols
-        (if (== $prev NOT) (NOT $expr) $expr  )
+    (if (== (get-metatype $expr) Symbol) ; This code checks if its a symbol
+        (if (== $prev NOT) (NOT $expr) $expr  ) ; if it is it will just propagate not to the symbols
         (let* ( ($op (car-atom $expr))
                 ($args (cdr-atom $expr)))
             (if (== $prev NOT)
