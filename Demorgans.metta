@@ -26,4 +26,4 @@
 (= (transform ('NOT' $a))
     ('NOT' (transform $a)))
 
-! (transform ('NOT' ('AND' 'x1' 'x2'))) ; ('OR' ('NOT' 'x1') ('NOT' 'x2'))
+! (transform ('NOT' ('AND' 'x1' 'x2' ))) ; ('OR' ('NOT' 'x1') ('NOT' 'x2'))
