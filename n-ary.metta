@@ -1,5 +1,6 @@
 (= (Demorgans $prev $expr)
-    (if (== $expr ()) ()
+    (if (== (get-metatype $expr) Symbol) ; This code checks if its a symbol
+        (if (== $prev NOT) (NOT $expr) $expr  ) ; if it is it will just propagate not to the symbols
         (let* ( ($op (car-atom $expr))
                 ($args (cdr-atom $expr)))
             (if (== $prev NOT)
@@ -10,12 +11,12 @@
                     )
             )
         ( (case ($op)
-                ( (OR) (OR $args))
-                ( (AND) (AND $args))
+                ( (OR) (OR (collapse (Demorgans () (superpose $args)))))
+                ( (AND) (AND (collapse (Demorgans () (superpose $args)))))
                 ( (NOT) (collapse (Demorgans $prev (superpose $args))))
             ))
 ))
 )
 )
 
-! (Demorgans NOT (AND x1 x2 x3))
+! (Demorgans NOT (OR x1 x2 x3 x4))
